@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "br.com.jamesson";
+option java_outer_classname = "JavaMicronautGrpc";
+option objc_class_prefix = "HLW";
+
+package br.com.jamesson;
+
+service JavaMicronautGrpcService {
+  rpc send (JavaMicronautGrpcRequest) returns (JavaMicronautGrpcReply) {}
+}
+
+message JavaMicronautGrpcRequest {
+  string name = 1;
+}
+
+message JavaMicronautGrpcReply {
+  string message = 1;
+}
