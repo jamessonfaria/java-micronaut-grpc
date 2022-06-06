@@ -1,5 +1,6 @@
 package br.com.jamesson.service.impl;
 
+import br.com.jamesson.domain.Product;
 import br.com.jamesson.dto.ProductRequestDto;
 import br.com.jamesson.dto.ProductResponseDto;
 import br.com.jamesson.repository.ProductRepository;
@@ -16,6 +17,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductResponseDto create(ProductRequestDto requestDto) {
-        return null;
+        var product = new Product(requestDto.name(), requestDto.price());
+        Product productSaved = productRepository.save(product);
+        return ProductResponseDto.fromEntityToDto(productSaved);
     }
 }
