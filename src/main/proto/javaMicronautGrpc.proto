@@ -7,8 +7,11 @@ option java_package = "br.com.jamesson";
 
 package br.com.jamesson;
 
+message Void {}
+
 service ProductsService {
   rpc Create (ProductRequest) returns (ProductResponse) {}
+  rpc List (Void) returns (stream ProductListResponse) {}
 }
 
 message ProductRequest {
@@ -20,4 +23,8 @@ message ProductResponse {
   google.protobuf.Int64Value id = 1;
   google.protobuf.StringValue name = 2;
   google.protobuf.DoubleValue price = 3;
+}
+
+message ProductListResponse {
+  repeated ProductResponse products = 1;
 }
